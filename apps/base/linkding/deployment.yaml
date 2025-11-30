@@ -12,6 +12,11 @@ spec:
       labels:
         app: linkding
     spec: 
+      securityContext:
+        fsGroup: 33 # www-data group ID
+        runAsUser: 33 # www-data user ID
+        runAsGroup: 33 # www-data group ID
+
       volumes:
       - name: linkding-data
         persistentVolumeClaim:
@@ -25,3 +30,5 @@ spec:
           volumeMounts:
             - mountPath: /etc/linkding/data
               name: linkding-data
+          securityContext:
+            allowPrivilegeEscalation: false
