@@ -27,6 +27,9 @@ spec:
           image: sissbruecker/linkding:1.31.0
           ports:
             - containerPort: 9090
+          envFrom:
+          - secretRef:
+              name: super-user-secret
           volumeMounts:
             - mountPath: /etc/linkding/data
               name: linkding-data
