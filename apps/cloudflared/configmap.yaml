@@ -15,7 +15,7 @@ data:
       service: http://linkding.linkding.svc.cluster.local:9090
 
     - hostname: grs.jeevant.org
-      service: http://kube-prometheus-stack-grafana.monitoring.svc.cluster.local:80
+      service: http://kube-prometheus-stack-grafana.monitoring.svc.cluster.local:3000
      
     - hostname: hello.example.com
       service: hello_world
