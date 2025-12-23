@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: cloudflared
+  #namespace: cloudflared   # MUST BE ADDED
 data:
   config.yaml: |
     tunnel: ldhlab
@@ -12,7 +13,7 @@ data:
 
     ingress:
     - hostname: ldhlab.jeevant.org
-      service: http://linkding:9090
+      service: http://linkding.linkding.svc.cluster.local:9090
 
     - hostname: grs.jeevant.org
       service: http://kube-prometheus-stack-grafana.monitoring.svc.cluster.local:80
