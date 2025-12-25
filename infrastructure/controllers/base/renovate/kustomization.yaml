@@ -1,0 +1,10 @@
+# home-cluster/infrastructure/controllers/base/renovate/kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Namespace is defined in namespace.yaml (so we include it as a resource)
+resources:
+  - namespace.yaml
+  - configmap.yaml
+  - renovate-container-env.yaml
+  - cronjob.yaml
