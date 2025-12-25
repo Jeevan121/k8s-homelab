@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: audiobookshelf
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: audiobookshelf
+  template:
+    metadata:
+      labels:
+        app: audiobookshelf
+    spec:
+      securityContext:
+        fsGroup: 1000
+        runAsUser: 1000
+        runAsGroup: 1000
+      volumes:
+      - name: audiobookshelf-audiobooks
+        persistentVolumeClaim:
+          claimName: audiobookshelf-audiobooks
+      - name: audiobookshelf-metadata
+        persistentVolumeClaim:
+          claimName: audiobookshelf-metadata
+      - name: audiobookshelf-podcasts
+        persistentVolumeClaim:
+          claimName: audiobookshelf-podcasts
+      - name: audiobookshelf-config
+        persistentVolumeClaim:
+          claimName: audiobookshelf-config
+
+      containers:
+        - name: audiobookshelf
+          image: ghcr.io/advplyr/audiobookshelf:2.30.0
+          ports:
+            - containerPort: 3005
+              protocol: TCP
+          envFrom:
+          - configMapRef:
+              name: audiobookshelf-configmap
+          volumeMounts:
+            - name: audiobookshelf-audiobooks
+              mountPath: /audiobooks
+            - name: audiobookshelf-metadata
+              mountPath: /metadata
+            - name: audiobookshelf-podcasts
+              mountPath: /podcasts
+            - name: audiobookshelf-config
+              mountPath: /config
+      restartPolicy: Always
+
+         
