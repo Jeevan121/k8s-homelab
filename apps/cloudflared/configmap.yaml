@@ -16,7 +16,10 @@ data:
 
     - hostname: grs.jeevant.org
       service: http://kube-prometheus-stack-grafana.monitoring.svc.cluster.local:80
-     
+    
+    - hostname: audiobooks.jeevant.org
+      service: http://audiobookshelf.audiobookshelf.svc.cluster.local:3005
+         
     - hostname: hello.example.com
       service: hello_world
 
