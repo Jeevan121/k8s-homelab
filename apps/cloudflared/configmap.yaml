@@ -19,6 +19,9 @@ data:
     
     - hostname: audiobooks.jeevant.org
       service: http://audiobookshelf.audiobookshelf.svc.cluster.local:3005
+
+    - hostname: mealie.jeevant.org
+      service: http://mealie.mealie.svc.cluster.local:9000
          
     - hostname: hello.example.com
       service: hello_world
