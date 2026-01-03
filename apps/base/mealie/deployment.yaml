@@ -19,7 +19,7 @@ spec:
         persistentVolumeClaim:
           claimName: mealie-data-pvc
       containers:
-      - image: ghcr.io/mealie-recipes/mealie:v3.4.0
+      - image: ghcr.io/mealie-recipes/mealie:v3.9.2
         name: mealie
         ports:
           - containerPort: 9000
